@@ -1,5 +1,6 @@
 import os
 from django.db import models
+from django.urls import reverse
 from apps.categories.models import Category
 from ckeditor.fields import RichTextField
 from utils.image_path import upload_products
@@ -28,7 +29,20 @@ class Product(models.Model):
         verbose_name="Дата создание",
     )
 
-    def __str__(self):
+    slug = models.SlugField(
+        max_length=100,
+        unique=True,
+        blank=True,
+        null=True,
+    )
+
+    def get_absolute_url(self):
+        return reverse(
+            'product_detail',
+            kwargs={'slug': self.slug}
+        )
+
+    def str(self):
         return self.title
 
 
@@ -47,5 +61,5 @@ class ProductImage(models.Model):
         os.remove(self.image.path)
         super().delete(using=None, keep_parents=False)
 
-    def __str__(self):
+    def str(self):
         return f"{self.image.url}"

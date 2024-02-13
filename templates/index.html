@@ -1,30 +1,30 @@
 {% extends 'base/base.html' %}
 
+
+{% block title %}
+    {{ website.title }}
+{% endblock %}
+
 {% block content %}
 
   <div class="overlay" data-overlay></div>
-
 <!--
     - HEADER
   -->
 {% include 'base/header.html' %}
-
   <!--
     - MAIN
   -->
-
   <main>
-
     <!--
       - BANNER
     -->
-
     <div class="banner">
-
       <div class="container">
 
         <div class="slider-container has-scrollbar">
 
+            {% for slider in website.slider.all %}
           <div class="slider-item">
 
             <img src="../static/assets/images/banner-1.jpg" alt="women's latest fashion sale" class="banner-img">
@@ -32,6 +32,7 @@
             <div class="banner-content">
 
               <p class="banner-subtitle">Trending item</p>
+            <img src="{{ slider.image.url }}" alt="women's latest fashion sale" class="banner-img">
 
               <h2 class="banner-title">Women's latest fashion sale</h2>
 
@@ -84,17 +85,12 @@
             </div>
 
           </div>
+            {% endfor %}
 
         </div>
 
       </div>
-
     </div>
-
-
-
-
-
 
 
 
@@ -104,52 +100,34 @@
     <!--
       - PRODUCT
     -->
-
     <div class="product-container">
-
       <div class="container">
-
-
         <!--
           - SIDEBAR
         -->
-
         <div class="sidebar  has-scrollbar" data-mobile-menu>
-
           <div class="sidebar-category">
-
             <div class="sidebar-top">
               <h2 class="sidebar-title">Категории</h2>
-
               <button class="sidebar-close-btn" data-mobile-menu-close-btn>
                 <ion-icon name="close-outline"></ion-icon>
               </button>
             </div>
-
             <ul class="sidebar-menu-category-list">
-
                 {% for category in left_categories %}
-
                 <li class="sidebar-menu-category">
-
                 <button class="sidebar-accordion-menu" data-accordion-btn>
-
                   <div class="menu-title-flex">
                     <img src="../static/assets/images/icons/dress.svg" alt="clothes" width="20" height="20"
                       class="menu-title-img">
-
                     <p class="menu-title">{{ category.title }}</p>
                   </div>
-
                   <div>
                     <ion-icon name="add-outline" class="add-icon"></ion-icon>
                     <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
                   </div>
-
                 </button>
-
                 <ul class="sidebar-submenu-category-list" data-accordion>
-
                     {% for child in category.children.all %}
                     <li class="sidebar-submenu-category">
                     <a href="#" class="sidebar-submenu-title">
@@ -158,39 +136,24 @@
                     </a>
                   </li>
                     {% endfor %}
-
-
                 </ul>
-
               </li>
-
                 {% endfor %}
-
             </ul>
-
           </div>
-
           <div class="product-showcase">
-
             <h3 class="showcase-heading">best sellers</h3>
-
             <div class="showcase-wrapper">
-
               <div class="showcase-container">
-
                 <div class="showcase">
-
                   <a href="#" class="showcase-img-box">
                     <img src="../static/assets/images/products/1.jpg" alt="baby fabric shoes" width="75" height="75"
                       class="showcase-img">
                   </a>
-
                   <div class="showcase-content">
-
                     <a href="#">
                       <h4 class="showcase-title">baby fabric shoes</h4>
                     </a>
-
                     <div class="showcase-rating">
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star"></ion-icon>
@@ -198,25 +161,18 @@
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star"></ion-icon>
                     </div>
-
                     <div class="price-box">
                       <del>$5.00</del>
                       <p class="price">$4.00</p>
                     </div>
-
                   </div>
-
                 </div>
-
                 <div class="showcase">
-
                   <a href="#" class="showcase-img-box">
                     <img src="../static/assets/images/products/2.jpg" alt="men's hoodies t-shirt" class="showcase-img"
                       width="75" height="75">
                   </a>
-
                   <div class="showcase-content">
-
                     <a href="#">
                       <h4 class="showcase-title">men's hoodies t-shirt</h4>
                     </a>
@@ -227,25 +183,18 @@
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star-half-outline"></ion-icon>
                     </div>
-
                     <div class="price-box">
                       <del>$17.00</del>
                       <p class="price">$7.00</p>
                     </div>
-
                   </div>
-
                 </div>
-
                 <div class="showcase">
-
                   <a href="#" class="showcase-img-box">
                     <img src="../static/assets/images/products/3.jpg" alt="girls t-shirt" class="showcase-img" width="75"
                       height="75">
                   </a>
-
                   <div class="showcase-content">
-
                     <a href="#">
                       <h4 class="showcase-title">girls t-shirt</h4>
                     </a>
@@ -256,25 +205,18 @@
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star-half-outline"></ion-icon>
                     </div>
-
                     <div class="price-box">
                       <del>$5.00</del>
                       <p class="price">$3.00</p>
                     </div>
-
                   </div>
-
                 </div>
-
                 <div class="showcase">
-
                   <a href="#" class="showcase-img-box">
                     <img src="../static/assets/images/products/4.jpg" alt="woolen hat for men" class="showcase-img" width="75"
                       height="75">
                   </a>
-
                   <div class="showcase-content">
-
                     <a href="#">
                       <h4 class="showcase-title">woolen hat for men</h4>
                     </a>
@@ -285,73 +227,45 @@
                       <ion-icon name="star"></ion-icon>
                       <ion-icon name="star"></ion-icon>
                     </div>
-
                     <div class="price-box">
                       <del>$15.00</del>
                       <p class="price">$12.00</p>
                     </div>
-
                   </div>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
-
-
         <div class="product-box">
-
           <!--
             - PRODUCT MINIMAL
           -->
-
           <div class="product-minimal">
-
             <div class="product-showcase">
-
               <h2 class="title">Пальто</h2>
-
               <div class="showcase-wrapper has-scrollbar">
-
                 <div class="showcase-container">
-
                     {% for product in palto_products %}
                   <div class="showcase" >
-
                     <a href="#" class="showcase-img-box">
                       <img src="{{ product.images.first  }}" alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
                     </a>
-
                     <div class="showcase-content">
-
                       <a href="#">
                         <h4 class="showcase-title">{{ product.title }}</h4>
                       </a>
-
                       <a href="#" class="showcase-category">{{ product.category.title }}</a>
-
                       <div class="price-box">
                         <p class="price">{{ product.price }} som</p>
 {#                        <del>$12.00</del>#}
                       </div>
-
                     </div>
-
                   </div>
                     {% endfor %}
-
                 </div>
-
               </div>
-
             </div>
-
             <div class="product-showcase">
 
               <h2 class="title">Штаны</h2>
@@ -390,7 +304,6 @@
               </div>
 
             </div>
-
             <div class="product-showcase">
 
               <h2 class="title">Кроссы</h2>
@@ -402,6 +315,7 @@
                   <div class="showcase">
 
                     <a href="#" class="showcase-img-box">
+                    <a href="{{ product.get_absolute_url }}" class="showcase-img-box">
                       <img src="{{ product.images.first }}" alt="pocket watch leather pouch" class="showcase-img"
                         width="70">
                     </a>
@@ -409,6 +323,7 @@
                     <div class="showcase-content">
 
                       <a href="#">
+                      <a href="{{ product.get_absolute_url }}">
                         <h4 class="showcase-title">{{ product.title }}</h4>
                       </a>
 
@@ -429,29 +344,19 @@
               </div>
 
             </div>
-
           </div>
-
-
-
           <!--
             - PRODUCT FEATURED
           -->
-
           <div class="product-featured">
-
             <h2 class="title">Deal of the day</h2>
-
             <div class="showcase-wrapper has-scrollbar">
-
               <div class="showcase-container">
-
                 <div class="showcase">
 
                   <div class="showcase-banner">
                     <img src="../static/assets/images/products/shampoo.jpg" alt="shampoo, conditioner & facewash packs" class="showcase-img">
                   </div>
-
                   <div class="showcase-content">
 
                     <div class="showcase-rating">
@@ -461,79 +366,55 @@
                       <ion-icon name="star-outline"></ion-icon>
                       <ion-icon name="star-outline"></ion-icon>
                     </div>
-
                     <a href="#">
                       <h3 class="showcase-title">shampoo, conditioner & facewash packs</h3>
                     </a>
-
                     <p class="showcase-desc">
                       Lorem ipsum dolor sit amet consectetur Lorem ipsum
                       dolor dolor sit amet consectetur Lorem ipsum dolor
                     </p>
-
                     <div class="price-box">
                       <p class="price">$150.00</p>
-
                       <del>$200.00</del>
                     </div>
-
                     <button class="add-cart-btn">add to cart</button>
-
                     <div class="showcase-status">
                       <div class="wrapper">
                         <p>
                           already sold: <b>20</b>
                         </p>
-
                         <p>
                           available: <b>40</b>
                         </p>
                       </div>
-
                       <div class="showcase-status-bar"></div>
                     </div>
-
                     <div class="countdown-box">
-
                       <p class="countdown-desc">
                         Hurry Up! Offer ends in:
                       </p>
-
                       <div class="countdown">
-
                         <div class="countdown-content">
-
                           <p class="display-number">360</p>
-
                           <p class="display-text">Days</p>
-
                         </div>
-
                         <div class="countdown-content">
                           <p class="display-number">24</p>
                           <p class="display-text">Hours</p>
                         </div>
-
                         <div class="countdown-content">
                           <p class="display-number">59</p>
                           <p class="display-text">Min</p>
                         </div>
-
                         <div class="countdown-content">
                           <p class="display-number">00</p>
                           <p class="display-text">Sec</p>
                         </div>
-
                       </div>
-
                     </div>
-
                   </div>
-
                 </div>
-
               </div>
-
               <div class="showcase-container">
 
                 <div class="showcase">
@@ -611,62 +492,39 @@
                 </div>
 
               </div>
-
             </div>
-
           </div>
-
-
-
           <!--
             - PRODUCT GRID
           -->
-
           <div class="product-main">
-
             <h2 class="title">New Products</h2>
-
             <div class="product-grid">
-
               <div class="showcase">
-
                 <div class="showcase-banner">
-
                   <img src="../static/assets/images/products/jacket-3.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
                   <img src="../static/assets/images/products/jacket-4.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
-
                   <p class="showcase-badge">15%</p>
-
                   <div class="showcase-actions">
-
                     <button class="btn-action">
                       <ion-icon name="heart-outline"></ion-icon>
                     </button>
-
                     <button class="btn-action">
                       <ion-icon name="eye-outline"></ion-icon>
                     </button>
-
                     <button class="btn-action">
                       <ion-icon name="repeat-outline"></ion-icon>
                     </button>
-
                     <button class="btn-action">
                       <ion-icon name="bag-add-outline"></ion-icon>
                     </button>
-
                   </div>
-
                 </div>
-
                 <div class="showcase-content">
-
                   <a href="#" class="showcase-category">jacket</a>
-
                   <a href="#">
                     <h3 class="showcase-title">Mens Winter Leathers Jackets</h3>
                   </a>
-
                   <div class="showcase-rating">
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
@@ -674,16 +532,12 @@
                     <ion-icon name="star-outline"></ion-icon>
                     <ion-icon name="star-outline"></ion-icon>
                   </div>
-
                   <div class="price-box">
                     <p class="price">$48.00</p>
                     <del>$75.00</del>
                   </div>
-
                 </div>
-
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -736,7 +590,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -787,7 +640,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -840,7 +692,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -891,7 +742,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -944,7 +794,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -994,7 +843,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -1047,7 +895,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -1098,7 +945,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -1151,7 +997,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -1202,7 +1047,6 @@
                 </div>
 
               </div>
-
               <div class="showcase">
 
                 <div class="showcase-banner">
@@ -1255,109 +1099,60 @@
                 </div>
 
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
-
-
-
-
-
     <!--
       - TESTIMONIALS, CTA & SERVICE
     -->
-
     <div>
-
       <div class="container">
-
         <div class="testimonials-box">
-
           <!--
             - TESTIMONIALS
           -->
-
           <div class="testimonial">
-
             <h2 class="title">testimonial</h2>
-
             <div class="testimonial-card">
-
               <img src="../static/assets/images/testimonial-1.jpg" alt="alan doe" class="testimonial-banner" width="80" height="80">
-
               <p class="testimonial-name">Alan Doe</p>
-
               <p class="testimonial-title">CEO & Founder Invision</p>
-
               <img src="../static/assets/images/icons/quotes.svg" alt="quotation" class="quotation-img" width="26">
-
               <p class="testimonial-desc">
                 Lorem ipsum dolor sit amet consectetur Lorem ipsum
                 dolor dolor sit amet.
               </p>
-
             </div>
-
           </div>
-
-
-
           <!--
             - CTA
           -->
-
           <div class="cta-container">
-
             <img src="../static/assets/images/cta-banner.jpg" alt="summer collection" class="cta-banner">
-
             <a href="#" class="cta-content">
-
               <p class="discount">25% Discount</p>
-
               <h2 class="cta-title">Summer collection</h2>
-
               <p class="cta-text">Starting @ $10</p>
-
               <button class="cta-btn">Shop now</button>
-
             </a>
-
           </div>
-
-
-
           <!--
             - SERVICE
           -->
-
           <div class="service">
-
             <h2 class="title">Our Services</h2>
-
             <div class="service-container">
-
               <a href="#" class="service-item">
-
                 <div class="service-icon">
                   <ion-icon name="boat-outline"></ion-icon>
                 </div>
-
                 <div class="service-content">
-
                   <h3 class="service-title">Worldwide Delivery</h3>
                   <p class="service-desc">For Order Over $100</p>
-
                 </div>
-
               </a>
-
               <a href="#" class="service-item">
 
                 <div class="service-icon">
@@ -1372,7 +1167,6 @@
                 </div>
 
               </a>
-
               <a href="#" class="service-item">
 
                 <div class="service-icon">
@@ -1387,7 +1181,6 @@
                 </div>
 
               </a>
-
               <a href="#" class="service-item">
 
                 <div class="service-icon">
@@ -1402,7 +1195,6 @@
                 </div>
 
               </a>
-
               <a href="#" class="service-item">
 
                 <div class="service-icon">
@@ -1417,53 +1209,31 @@
                 </div>
 
               </a>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
-
-
-
-
-
     <!--
       - BLOG
     -->
-
     <div class="blog">
-
       <div class="container">
-
         <div class="blog-container has-scrollbar">
-
           <div class="blog-card">
-
             <a href="#">
               <img src="../static/assets/images/blog-1.jpg" alt="Clothes Retail KPIs 2021 Guide for Clothes Executives" width="300" class="blog-banner">
             </a>
-
             <div class="blog-content">
-
               <a href="#" class="blog-category">Fashion</a>
-
               <a href="#">
                 <h3 class="blog-title">Clothes Retail KPIs 2021 Guide for Clothes Executives.</h3>
               </a>
-
               <p class="blog-meta">
                 By <cite>Mr Admin</cite> / <time datetime="2022-04-06">Apr 06, 2022</time>
               </p>
-
             </div>
-
           </div>
-
           <div class="blog-card">
 
             <a href="#">
@@ -1486,7 +1256,6 @@
             </div>
 
           </div>
-
           <div class="blog-card">
 
             <a href="#">
@@ -1509,7 +1278,6 @@
             </div>
 
           </div>
-
           <div class="blog-card">
 
             <a href="#">
@@ -1532,27 +1300,12 @@
             </div>
 
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </main>
-
-
-
-
-
   <!--
     - FOOTER
   -->
 {% include 'base/footer.html' %}
-
 {% endblock %}
-
-
-
-
-

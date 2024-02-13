@@ -1,0 +1,37 @@
+ extends 'base/base.html' %}
+
+{% block title %}
+    {{ product.title }}
+{% endblock %}
+
+
+{% block content %}
+
+    {% include 'base/header.html' %}
+
+    <main>
+        <div style="display: flex; justify-content: center">
+            <div class="item-element">
+                <h1 style="padding-bottom: 20px">{{ product.title }}</h1>
+                {{ product.description|safe }}
+
+                <div style="width: 100%">
+                    <ul style="padding: 20px; display: flex">
+                        {% for image in product.images.all %}
+                        <li style="padding: 30px"><img src="{{ image.image.url }}" alt="" style="width: 300px; height: 300px"></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <center>
+                    <p class="price" style="font-size: 40px; color: white; background-color: red">{{ product.price }} som</p>
+{#                        <del>$34.00</del>#}
+                </center>
+
+            </div>
+        </div>
+    </main>
+
+    {% include 'base/footer.html' %}
+
+{% endblock %}

@@ -17,4 +17,11 @@ class ProductListView(generic.ListView):
         context['shtany_products'] = Product.objects.filter(category__title="Штаны")[:4]
         context['crossy_products'] = Product.objects.filter(category__title="Кроссы")[:4]
 
+
         return context
+
+
+class ProductDetailView(generic.DetailView):
+    model = Product
+    pk_url_kwarg = 'slug'
+    template_name = 'detail.html'
