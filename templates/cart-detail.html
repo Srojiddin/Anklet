@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Корзина
+{% endblock %}
+
+
+{% block content %}
+
+    {% include 'base/header.html' %}
+
+    <main>
+        <ul>
+            {% for item in cart.items_cart.all %}
+            <li>
+                <div style="padding: 30px; display: flex; align-items: center; justify-content: space-evenly;">
+                    <img src="{{ item.product.images.first }}" style="width: 250px; height: 250px;" alt="Product">
+                    <h1 style="margin-left: 50px">{{ item.product.title }}</h1>
+
+                    <div>
+                        <div style="display: flex;align-items: center; border: 1px solid black; gap: 20px;">
+                            <a href="{% url 'minus_quantity' item.id %}" style="font-size: 50px; color: black">
+                                -
+                            </a>
+
+                            <span style="font-size: 30px">
+                                {{ item.quantity }}
+                            </span>
+
+                            <a href="{% url 'plus_quantity' item.id %}" style="font-size: 50px; color: black">
+                                +
+                            </a>
+                        </div>
+                        <p>{{ item.get_subtotal_sum }}          <span style="text-decoration: underline;">C</span></p>
+                    </div>
+
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <center>
+        <div style="border: 1px solid black; width: 75%; display: flex; justify-content: center"></div>
+        </center>
+
+    <div style="display: flex; justify-content: space-evenly; align-items: center; padding-top: 30px; padding-bottom: 30px">
+        <h1>Общая стоимость</h1>
+        <p>{{ cart.get_total_sum }}</p>
+        <a href="" style="color: white; background-color: red; padding: 10px">Оформить заказ</a>
+    </div>
+
+    </main>
+
+    {% include 'base/footer.html' %}
+
+{% endblock %}

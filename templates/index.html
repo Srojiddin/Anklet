@@ -249,7 +249,7 @@
                     {% for product in palto_products %}
                   <div class="showcase" >
                     <a href="#" class="showcase-img-box">
-                      <img src="{{ product.images.first  }}" alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
+                      <img src="{{ product.images.first.image.url  }}" alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
                     </a>
                     <div class="showcase-content">
                       <a href="#">
@@ -277,17 +277,17 @@
                   <div class="showcase">
 
                     <a href="#" class="showcase-img-box">
-                      <img src="{{ product.images.first }}" alt="running & trekking shoes - white" class="showcase-img"
+                      <img src="{{  product.images.first.image.url  }}" alt="running & trekking shoes - white" class="showcase-img"
                         width="70">
                     </a>
 
                     <div class="showcase-content">
 
                       <a href="#">
-                        <h4 class="showcase-title">{{ product.title }}</h4>
+                        <h4 class="showcase-title">{{  product.category.title.image.url  }}</h4>
                       </a>
 
-                      <a href="#" class="showcase-category">{{ product.category.title }}</a>
+                      <a href="#" class="showcase-category">{{  product.category.title.image.url  }}</a>
 
                       <div class="price-box">
                         <p class="price">{{ product.price }} soms</p>
@@ -316,7 +316,7 @@
 
                     <a href="#" class="showcase-img-box">
                     <a href="{{ product.get_absolute_url }}" class="showcase-img-box">
-                      <img src="{{ product.images.first }}" alt="pocket watch leather pouch" class="showcase-img"
+                      <img src="{{ product.images.first.image.url }}" alt="pocket watch leather pouch" class="showcase-img"
                         width="70">
                     </a>
 
@@ -327,7 +327,7 @@
                         <h4 class="showcase-title">{{ product.title }}</h4>
                       </a>
 
-                      <a href="#" class="showcase-category">{{ product.category.title }}</a>
+                      <a href="#" class="showcase-category">{{ product.category.title.image.url }}</a>
 
                       <div class="price-box">
                         <p class="price">{{ product.price }} soms</p>
