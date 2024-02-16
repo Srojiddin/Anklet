@@ -3,10 +3,10 @@ from django.contrib import admin
 from apps.products.models import Product, ProductImage
 
 
-
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
     extra = 1
+
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
@@ -20,6 +20,3 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}
     inlines = [ProductImageInline]
-
-
-

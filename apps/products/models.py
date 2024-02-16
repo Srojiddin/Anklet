@@ -42,7 +42,7 @@ class Product(models.Model):
             kwargs={'slug': self.slug}
         )
 
-    def str(self):
+    def __str__(self):
         return self.title
 
 
@@ -54,12 +54,12 @@ class ProductImage(models.Model):
     )
     image = models.ImageField(
         upload_to=upload_products,
-        verbose_name="Картика",
+        verbose_name="Картинка",
     )
 
     def delete(self, using=None, keep_parents=False):
         os.remove(self.image.path)
         super().delete(using=None, keep_parents=False)
 
-    def str(self):
+    def __str__(self):
         return f"{self.image.url}"
